@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Per noi ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#a91530,#62000e);color:#fff1d6;text-align:center;font-family:Georgia,serif}
+h1{font-size:clamp(2.3rem,7vw,4.5rem);font-weight:normal;color:#ffe3ab;margin:35px 10px}
+.screen{display:none;padding:20px;min-height:100vh}.screen.active{display:block}
+.envelope{position:relative;margin:60px auto 15px;width:240px;height:160px;background:#f7e7c7;border:0;border-radius:7px;cursor:pointer;box-shadow:0 15px 30px #320009;overflow:hidden}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(35deg,transparent 49%,#d8b993 50%,transparent 51%),linear-gradient(-35deg,transparent 49%,#d8b993 50%,transparent 51%)}
+.seal{position:absolute;top:57px;left:95px;width:50px;height:50px;border-radius:50%;background:#99001c;color:#fff;display:grid;place-items:center;font-size:25px;box-shadow:0 3px 8px #55000b}
+.options{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin:50px auto;max-width:850px}
+button.option,button.back,button.play{background:#78132b;color:#ffe3ab;border:1px solid #d7aa63;border-radius:16px;padding:20px;cursor:pointer;font:20px Georgia;box-shadow:0 5px 15px #40000b}
+button:hover{filter:brightness(1.2)}.option{min-width:155px}.option span{display:block;font-size:17px;margin-top:8px}
+.photos{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:35px auto}
+.photos img{width:240px;height:300px;object-fit:cover;background:#fff1df;border:10px solid #fff1df;border-bottom-width:32px;box-shadow:0 8px 20px #36000a;transform:rotate(-3deg)}
+.photos img:nth-child(2){transform:rotate(3deg)}.photos img:nth-child(3){transform:rotate(-2deg)}
+.paper{background:#fff0d9;color:#612234;max-width:650px;margin:25px auto;padding:35px;border-radius:8px;line-height:1.9;font-size:20px;box-shadow:0 10px 25px #33000b}
+.heart{position:fixed;color:#ffc2cc;opacity:.45;animation:float 9s linear infinite;pointer-events:none;z-index:-1}@keyframes float{from{transform:translateY(105vh)}to{transform:translateY(-15vh)}}
+audio{max-width:90%;margin:25px}.hint{font-style:italic}
+</style></head><body>
+<div class="heart" style="left:12%;animation-delay:-2s">♥</div><div class="heart" style="left:78%;animation-delay:-5s">♥</div>
+<section id="home" class="screen active"><h1>Una lettera per te ❤️</h1><button class="envelope" onclick="show('menu')" aria-label="Apri la busta"><span class="seal">♥</span></button><p class="hint">Tocca la busta, amore mio</p></section>
+<section id="menu" class="screen"><h1>Buon terzo mesiversario, amore mio ❤️</h1><p>Scegli una sorpresa...</p><div class="options">
+<button class="option" onclick="show('photos')">📷<span>I nostri ricordi</span></button>
+<button class="option" onclick="show('letter')">💌<span>La mia lettera</span></button>
+<button class="option" onclick="show('music')">🎵<span>La nostra canzone</span></button>
+<button class="option" onclick="show('gift')">🎁<span>Una sorpresa</span></button></div><button class="back" onclick="show('home')">Indietro</button></section>
+<section id="photos" class="screen"><h1>I nostri ricordi 📸</h1><div class="photos"><img src="foto1.jpg" alt="Primo ricordo"><img src="foto2.jpg" alt="Secondo ricordo"><img src="foto3.jpg" alt="Terzo ricordo"></div><p>Ogni momento con te è speciale. ❤️</p><button class="back" onclick="show('menu')">Indietro</button></section>
+<section id="letter" class="screen"><h1>Happy Anniversary ❤️</h1><div class="paper"><h2>Per te, amore mio</h2><p>Tre mesi insieme, e ogni giorno con te è diventato un ricordo prezioso. Grazie per i sorrisi, gli abbracci e tutti i momenti che stiamo costruendo insieme.</p><p>Non vedo l'ora di vivere mille altre avventure con te. Sei il mio regalo più bello.</p><p>Ti amo ❤️</p></div><button class="back" onclick="show('menu')">Indietro</button></section>
+<section id="music" class="screen"><h1>La nostra canzone 🎵</h1><p>Premi play per ascoltarla insieme ❤️</p><audio id="song" controls><source src="canzone.aac" type="audio/aac"><source src="canzone.mp3" type="audio/mpeg">Il browser non supporta questo audio.</audio><p class="hint">Metti nella cartella canzone.aac oppure canzone.mp3</p><button class="back" onclick="show('menu')">Indietro</button></section>
+<section id="gift" class="screen"><h1>Una sorpresa per te 🎁</h1><button class="option" onclick="document.getElementById('reveal').hidden=false">Apri il regalo 🎁</button><p id="reveal" hidden style="font-size:28px;color:#ffdb9d">Il regalo più bello è poter scegliere te, ogni giorno. Ti amo! ❤️</p><p><button class="back" onclick="show('menu')">Indietro</button></p></section>
+<script>function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id!=='music'){const a=document.getElementById('song');a.pause()}window.scrollTo(0,0)}</script></body></html>
